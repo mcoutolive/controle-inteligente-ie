@@ -1,0 +1,45 @@
+@startuml
+!pragma teoz true
+left to right direction
+
+start
+
+:A - Início da Simulação;
+:B - Gerador de Dados;
+:A - Início da Simulação; --> :B - Gerador de Dados;
+
+:B - Gerador de Dados; --> :C - Módulo de Inspeção; :Lista de produtos - tipo 1 e 2;
+
+:C1 - InspecaoTipo1;
+:C2 - InspecaoTipo2;
+
+:C - Módulo de Inspeção; --> :C1 - InspecaoTipo1;
+:C - Módulo de Inspeção; --> :C2 - InspecaoTipo2;
+
+:D - Lista de produtos inspecionados - tempo calculado;
+:C1 - InspecaoTipo1; --> :D - Lista de produtos inspecionados - tempo calculado;
+:C2 - InspecaoTipo2; --> :D - Lista de produtos inspecionados - tempo calculado;
+
+:E - Módulo de Controle de Estoque;
+:D - Lista de produtos inspecionados - tempo calculado; --> :E - Módulo de Controle de Estoque;
+
+:E1 - Inserir produtos inspecionados - por cliente;
+:E2 - Buscar produto pelo par - cliente, tamanho;
+
+:E - Módulo de Controle de Estoque; --> :E1 - Inserir produtos inspecionados - por cliente;
+:E - Módulo de Controle de Estoque; --> :E2 - Buscar produto pelo par - cliente, tamanho;
+
+:F - Módulo de Monitoramento;
+:E1 - Inserir produtos inspecionados - por cliente; --> :F - Módulo de Monitoramento;
+:E2 - Buscar produto pelo par - cliente, tamanho; --> :F - Módulo de Monitoramento;
+
+:C - Módulo de Inspeção; --> :F - Módulo de Monitoramento;
+
+:G - Gráficos de desempenho - Tipo 1, Tipo 2, Controle;
+:F - Módulo de Monitoramento; --> :G - Gráficos de desempenho - Tipo 1, Tipo 2, Controle;
+
+:H - Fim da Simulação;
+:G - Gráficos de desempenho - Tipo 1, Tipo 2, Controle; --> :H - Fim da Simulação;
+
+stop
+@enduml
